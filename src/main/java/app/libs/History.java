@@ -15,4 +15,9 @@ public class History {
     private int id;
     private int user_id;
     private int ride_id;
+
+    public History(int user_id, int ride_id) {
+        this.user_id = user_id;
+        this.ride_id = ride_id;
+    }
 }

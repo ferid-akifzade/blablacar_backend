@@ -16,4 +16,10 @@ public class Vehicle {
     private String model;
     private String img;
     private int sits;
+
+    public Vehicle(String model, String img, int sits) {
+        this.model = model;
+        this.img = img;
+        this.sits = sits;
+    }
 }
