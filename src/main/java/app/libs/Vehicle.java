@@ -13,6 +13,7 @@ import javax.persistence.Id;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class Vehicle {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
