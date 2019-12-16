@@ -21,6 +21,9 @@ public class Driver {
     private String phonenum;
     private int vehicle_id;
 
+    public Driver() {
+    }
+
     public Driver(String name, String surname, String email, String password, String gender, String phonenum, int vehicle_id) {
         this.name = name;
         this.surname = surname;
