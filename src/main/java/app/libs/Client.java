@@ -13,7 +13,7 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Client {
+public class Client implements User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;

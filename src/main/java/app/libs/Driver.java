@@ -13,7 +13,7 @@ import javax.persistence.Id;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Driver {
+public class Driver implements  User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
