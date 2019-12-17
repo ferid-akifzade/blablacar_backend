@@ -32,4 +32,9 @@ public class Client implements User {
         this.gender = gender;
         this.phonenum = phonenum;
     }
+
+    @Override
+    public int getId() {
+        return this.id;
+    }
 }

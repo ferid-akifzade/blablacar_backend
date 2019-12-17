@@ -28,12 +28,13 @@ public class RegisterService {
 
 
     }
-    public void register(String name, String surname, String email, String password, String radiobox, String gender, String phonenumber,String vehicle,int seats) {
+    public boolean register(String name, String surname, String email, String password, String radiobox, String gender, String phonenumber,String vehicle,int seats) {
      if(radiobox.equals("client")){
 
          clientRepository.save(new Client(name,surname,email,password,gender,phonenumber));
      }
      else{ driverRepository.save(new Driver(name,surname,email,password,gender,phonenumber,addVehicle(vehicle,seats)));}
-
+        return true;
+     // TODO: 17.12.2019 check whether register is succesfull;
     }
 }
