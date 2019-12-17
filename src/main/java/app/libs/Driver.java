@@ -1,6 +1,8 @@
 package app.libs;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +11,9 @@ import javax.persistence.Id;
 
 @Data
 @Entity
-public class Driver {
+@AllArgsConstructor
+@NoArgsConstructor
+public class Driver implements  User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -33,4 +37,7 @@ public class Driver {
         this.phonenum = phonenum;
         this.vehicle_id = vehicle_id;
     }
+
+
+
 }

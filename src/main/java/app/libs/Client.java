@@ -1,6 +1,8 @@
 package app.libs;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,8 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-public class Client {
+public class Client implements User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -28,4 +32,6 @@ public class Client {
         this.gender = gender;
         this.phonenum = phonenum;
     }
+
+
 }

@@ -22,16 +22,14 @@ public class Ride {
     private String comment;
     private String date;
     private int price;
-    private int client_id;
     private int driver_id;
 
-    public Ride(String from_place, String to_place, String comment, String date, int price, int client_id, int driver_id) {
+    public Ride(String from_place, String to_place, String comment, String date, int price,  int driver_id) {
         this.from_place = from_place;
         this.to_place = to_place;
         this.comment = comment;
         this.date = date;
         this.price = price;
-        this.client_id = client_id;
         this.driver_id = driver_id;
     }
 
