@@ -17,11 +17,12 @@ public class History {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private int user_id;
+    private int client_id;
     private int ride_id;
-
-    public History(int user_id, int ride_id) {
-        this.user_id = user_id;
+    private int sits;
+    public History(int client_id, int ride_id, int sits) {
+        this.client_id = client_id;
         this.ride_id = ride_id;
+        this.sits = sits;
     }
 }

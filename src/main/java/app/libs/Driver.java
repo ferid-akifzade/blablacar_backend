@@ -13,7 +13,7 @@ import javax.persistence.Id;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Driver {
+public class Driver implements  User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -34,4 +34,10 @@ public class Driver {
         this.phonenum = phonenum;
         this.vehicle_id = vehicle_id;
     }
+
+    @Override
+    public int getId() {
+        return this.id;
+    }
+
 }

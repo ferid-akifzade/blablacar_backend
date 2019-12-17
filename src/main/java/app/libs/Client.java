@@ -13,7 +13,7 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Client {
+public class Client implements User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -31,5 +31,10 @@ public class Client {
         this.password = password;
         this.gender = gender;
         this.phonenum = phonenum;
+    }
+
+    @Override
+    public int getId() {
+        return this.id;
     }
 }
