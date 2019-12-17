@@ -2,7 +2,9 @@ package app.service;
 
 import app.libs.Driver;
 import app.repository.DriverRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DriverService {
 
     private final DriverRepository driverRepository;
@@ -11,9 +13,7 @@ public class DriverService {
         this.driverRepository = driverRepository;
     }
 
-    public void save() {
-        driverRepository.save(new Driver());
-    }
+
 
 
 }

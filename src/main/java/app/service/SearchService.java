@@ -7,7 +7,9 @@ import app.repository.RideRepository;
 import app.repository.VehicleRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
@@ -23,7 +25,7 @@ public class SearchService {
         this.vehicleRepository = vehicleRepository;
     }
 // custom methods spring data
-    public Iterable<Ride> findAll(String departure, String destination, String datetime,int seatnum){
+    public List<Ride> findAll(String departure, String destination, String datetime, int seatnum){
         Iterable<Ride> all = rideRepository.findAll();
         Stream<Ride> rideStream = StreamSupport.stream(all.spliterator(), false)
                 .filter(e -> e.getFrom_place().equals(departure))
@@ -33,14 +35,12 @@ public class SearchService {
             Optional<Driver> byId = driverRepository.findById(e.getDriver_id());
             Optional<Integer> integer = byId.map(Driver::getVehicle_id);
             Iterable<Vehicle> all1 = vehicleRepository.findAll();
-            Stream<Vehicle> vehicleStream=StreamSupport.stream(all.spliterator(),false)
-                    .filter(e->e.)
+           return   StreamSupport.stream(all1.spliterator(),false)
+                    .filter(v->v.getSits()>=seatnum)
+                    .collect(Collectors.toList());
 
-            return 1;
         });
-
-
-        driverRepository.findById()
+       throw new IllegalArgumentException("No such ride for your search");
     }
 
 
