@@ -30,11 +30,21 @@ public class RegisterService {
     }
     public boolean register(String name, String surname, String email, String password, String radiobox, String gender, String phonenumber,String vehicle,int seats) {
      if(radiobox.equals("client")){
-
+         Iterable<Client> allClients = clientRepository.findAll();
+         for (Client client:allClients) {
+             if(client.getEmail().equals(email)) return false;
+         }
          clientRepository.save(new Client(name,surname,email,password,gender,phonenumber));
      }
-     else{ driverRepository.save(new Driver(name,surname,email,password,gender,phonenumber,addVehicle(vehicle,seats)));}
+     else{
+         Iterable<Driver> allDrivers = driverRepository.findAll();
+         for (Driver driver:allDrivers) {
+             if(driver.getEmail().equals(email)) return false;
+         }
+         driverRepository.save(new Driver(name,surname,email,password,gender,phonenumber,addVehicle(vehicle,seats)));
+
+     }
         return true;
-     // TODO: 17.12.2019 check whether register is succesfull;
+
     }
 }
