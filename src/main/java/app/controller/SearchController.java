@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -25,8 +26,7 @@ public class SearchController {
          return "search";
      }
      @PostMapping
-     public void postsearch(
-             Model themodel,
+     public List<Ride> postsearch(
              @RequestParam("departure") String departure,
              @RequestParam("destination") String destination,
              @RequestParam("date") String date,
@@ -34,10 +34,11 @@ public class SearchController {
      {
          try {
              List<Ride> allSeatchedRides = searchService.findAll(departure, destination, date, Integer.parseInt(numseats));
-             themodel.addAttribute("Rides",allSeatchedRides);
+             return allSeatchedRides;
          }
          catch (Exception e){
-             themodel.addAttribute("Rides","No such ride ");
+             return  new ArrayList<>();
+
          }
 
      }
