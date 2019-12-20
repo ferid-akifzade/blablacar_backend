@@ -10,9 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Data
+@NoArgsConstructor
 @Entity
 @AllArgsConstructor
-@NoArgsConstructor
 public class Driver implements  User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,6 +24,7 @@ public class Driver implements  User {
     private String gender;
     private String phonenum;
     private int vehicle_id;
+
 
     public Driver(String name, String surname, String email, String password, String gender, String phonenum, int vehicle_id) {
         this.name = name;

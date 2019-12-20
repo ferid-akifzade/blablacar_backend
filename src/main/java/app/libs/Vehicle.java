@@ -24,9 +24,6 @@ public class Vehicle {
 
     public Vehicle(String model, int seats) {
         this.model = model;
-
         this.sits = seats;
     }
-
-
 }

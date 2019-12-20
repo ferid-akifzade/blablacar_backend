@@ -32,4 +32,6 @@ public class Ride {
         this.price = price;
         this.driver_id = driver_id;
     }
+
+
 }
