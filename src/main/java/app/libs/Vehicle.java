@@ -26,4 +26,5 @@ public class Vehicle {
         this.model = model;
         this.sits = seats;
     }
+
 }
