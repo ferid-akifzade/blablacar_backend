@@ -15,6 +15,7 @@ public class ReservationController {
     @PostMapping
     public String reservation(@RequestParam("button") int button, @RequestParam("seats") int seats, @CookieValue("name = \"%ID%\", defaultValue = \"-1\"") int clientID){
 
+        // reservation test
         if(reservationService.reservation(button,seats,clientID))
         return"redirect:/";
 
