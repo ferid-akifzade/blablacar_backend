@@ -1,35 +1,39 @@
 package app.controller;
 
+import app.libs.User;
 import app.service.LoginService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/login")
 public class LoginController {
-private final LoginService loginService;
+    private final LoginService loginService;
 
     public LoginController(LoginService loginService) {
         this.loginService = loginService;
     }
+
     @PostMapping
-    public String postLogin(@RequestParam("email") String email, @RequestParam("password") String password,
-                            @RequestParam("radiobox") String radiobox, HttpServletResponse response){
-        int check = loginService.check(email, password, radiobox);
-        if(check==-1){
-            return "login";
-        }
-        Cookie userCookie = new Cookie("%USERTYPE%",radiobox);
-        Cookie idCookie = new Cookie("%ID%",String.valueOf(check));
+    public Object postLogin(@RequestParam("email") String email, @RequestParam("password") String password,
+                            @RequestParam("radiobox") String radiobox, HttpServletResponse response) {
+        Optional<User> check = loginService.check(email, password, radiobox);
+        if (!check.isPresent())
+            return "index";
+
+        Cookie userCookie = new Cookie("%USERTYPE%", radiobox);
+        Cookie idCookie = new Cookie("%ID%", String.valueOf(check.get().getId()));
         response.addCookie(userCookie);
         response.addCookie(idCookie);
-        return "redirect:/";
+        return check.get();
     }
-
-
+    @GetMapping
+    public Object getLogin()
+    {
+        return "index";
+    }
 }

@@ -12,33 +12,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
- @RequestMapping("/search")
+@RequestMapping("/search")
 public class SearchController {
     private final SearchService searchService;
 
     public SearchController(SearchService searchService) {
-        
+
         this.searchService = searchService;
     }
-     @GetMapping
-     public String getAdd()
-     {
-         return "search";
-     }
-     @PostMapping
-     public List<Ride> postsearch(
-             @RequestParam("departure") String departure,
-             @RequestParam("destination") String destination,
-             @RequestParam("date") String date,
-             @RequestParam("numseats") String numseats)
-     {
-         try {
-             return searchService.findAll(departure, destination, date, Integer.parseInt(numseats));
-         }
-         catch (Exception e){
-             return  new ArrayList<>();
 
-         }
+    @GetMapping
+    public List<Ride> getAdd() {
+        return searchService.getAll();
+    }
 
-     }
+    @PostMapping
+    public Object postsearch(
+            @RequestParam("departure") String departure,
+            @RequestParam("destination") String destination,
+            @RequestParam("date") String date,
+            @RequestParam("numseats") String numseats) {
+        try {
+            return searchService.findAll(departure, destination, date, Integer.parseInt(numseats));
+        } catch (Exception e) {
+            return "index";
+
+        }
+
+    }
 }

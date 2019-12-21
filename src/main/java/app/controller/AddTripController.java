@@ -17,11 +17,11 @@ public class AddTripController {
     @GetMapping
     public String getAdd()
     {
-        return "addTrip";
+        return "index";
     }
 
     @PostMapping
-    public String postAdd(
+    public Ride postAdd(
             @RequestParam("from_place") String from,
             @RequestParam("to_place") String to,
             @RequestParam("comment") String comment,
@@ -29,7 +29,6 @@ public class AddTripController {
             @RequestParam("price") int price,
             @CookieValue(name = "%ID%", defaultValue = "-1") int driver_id)
     {
-        addRideService.add(new Ride(from,to,comment,date,price,driver_id));
-        return "redirect:/";
+        return addRideService.add(new Ride(from,to,comment,date,price,driver_id));
     }
 }
