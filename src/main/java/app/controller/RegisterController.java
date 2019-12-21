@@ -30,7 +30,7 @@ public class RegisterController {
         if (register.isPresent()) {
             return register;
         }
-        return "index";
+        return "register failed";
     }
     @ResponseBody
     @GetMapping
