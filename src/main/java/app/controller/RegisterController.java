@@ -3,6 +3,7 @@ package app.controller;
 import app.libs.User;
 import app.service.RegisterService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +19,7 @@ public class RegisterController {
     public RegisterController(RegisterService registerService) {
         this.registerService = registerService;
     }
+    @ResponseBody
     @PostMapping
     public Object registerPost(@RequestParam("name") String name, @RequestParam("surname") String surname, @RequestParam("email") String email,
                                @RequestParam("password") String password, @RequestParam("radiobox") String radiobox,
@@ -29,5 +31,11 @@ public class RegisterController {
             return register;
         }
         return "index";
+    }
+    @ResponseBody
+    @GetMapping
+    public String get()
+    {
+        return "registerIndex";
     }
 }

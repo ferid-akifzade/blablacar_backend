@@ -22,12 +22,13 @@ public class SearchController {
         this.searchService = searchService;
         this.reservationService = reservationService;
     }
-
+    @ResponseBody
     @GetMapping
     public List<Ride> getAdd() {
         return searchService.getAll();
     }
 
+    @ResponseBody
     @PostMapping
     public Object postsearch(
             @RequestParam("departure") String departure,
@@ -37,15 +38,16 @@ public class SearchController {
         try {
             return searchService.findAll(departure, destination, date, Integer.parseInt(numseats));
         } catch (Exception e) {
-            return "index";
+            return "search failed";
 
         }
     }
+    @ResponseBody
     @GetMapping("/{id}")
     public Object reservation(@RequestParam("button") int button, @RequestParam("seats") int seats, @PathVariable("id") int clientID){
         Optional<History> reservation = reservationService.reservation(button, seats, clientID);
         if (reservation.isPresent())
             return reservation.get();
-        return "index";
+        return "search failed";
     }
 }

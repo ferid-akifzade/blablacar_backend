@@ -13,11 +13,13 @@ public class AddTripController {
     public AddTripController(AddRideService addRideService) {
         this.addRideService = addRideService;
     }
+    @ResponseBody
     @GetMapping
     public String getAdd()
     {
-        return "index";
+        return "addTripGet";
     }
+    @ResponseBody
     @PostMapping
     public Ride postAdd(
             @RequestParam("from_place") String from,
