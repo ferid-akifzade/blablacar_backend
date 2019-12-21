@@ -42,4 +42,8 @@ public class SearchService {
                 })
                 .collect(Collectors.toList());
     }
+    public List<Ride> getAll()
+    {
+        return (List<Ride>) rideRepository.findAll();
+    }
 }

@@ -11,8 +11,8 @@ public class AddRideService {
         this.rideRepository = rideRepository;
     }
 
-    public void add(Ride ride)
+    public Ride add(Ride ride)
     {
-        rideRepository.save(ride);
+        return rideRepository.save(ride);
     }
 }
