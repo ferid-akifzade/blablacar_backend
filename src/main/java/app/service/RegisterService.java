@@ -27,8 +27,6 @@ public class RegisterService {
     public int addVehicle(String model, int seats) {
         Vehicle vehicle = new Vehicle(model, seats);
         return vehicleRepository.save(vehicle).getId();
-
-
     }
 
     public Optional<User> register(String name, String surname, String email, String password, String radiobox, String gender, String phonenumber, String vehicle, int seats) {
