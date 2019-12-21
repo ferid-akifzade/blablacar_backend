@@ -25,7 +25,7 @@ public class RegisterController {
                                @RequestParam("password") String password, @RequestParam("radiobox") String radiobox,
                                @RequestParam("gender") String gender, @RequestParam("phoneNum") String phoneNum,
                                @RequestParam(value = "vehicle",defaultValue = "") String vehicle,
-                               @RequestParam(value = "seats",defaultValue = "") String seats) {
+                               @RequestParam(value = "seats",defaultValue = "0") String seats) {
         Optional<User> register = registerService.register(name, surname, email, password, radiobox, gender, phoneNum, vehicle, Integer.parseInt(seats));
         if (register.isPresent()) {
             return register;

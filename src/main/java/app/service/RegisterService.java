@@ -31,20 +31,20 @@ public class RegisterService {
 
     public Optional<User> register(String name, String surname, String email, String password, String radiobox, String gender, String phonenumber, String vehicle, int seats) {
         if (radiobox.equals("client")) {
+            System.out.println("Entered client");
             Iterable<Client> allClients = clientRepository.findAll();
             for (Client client : allClients) {
                 if (client.getEmail().equals(email)) return Optional.of(client);
             }
-            clientRepository.save(new Client(name, surname, email, password, gender, phonenumber));
+            return Optional.of(clientRepository.save(new Client(name, surname, email, password, gender, phonenumber)));
         } else {
+            System.out.println("Entered driver");
             Iterable<Driver> allDrivers = driverRepository.findAll();
             for (Driver driver : allDrivers) {
                 if (driver.getEmail().equals(email)) return Optional.of(driver);
             }
-            driverRepository.save(new Driver(name, surname, email, password, gender, phonenumber, addVehicle(vehicle, seats)));
+            return Optional.of(driverRepository.save(new Driver(name, surname, email, password, gender, phonenumber, addVehicle(vehicle, seats))));
 
         }
-        return Optional.empty();
-
     }
 }
