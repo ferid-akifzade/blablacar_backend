@@ -15,7 +15,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 public class Ride {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String from_place;
     private String to_place;

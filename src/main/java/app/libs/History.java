@@ -15,7 +15,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 public class History {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int client_id;
     private int ride_id;

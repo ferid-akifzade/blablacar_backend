@@ -17,7 +17,6 @@ public class LoginController {
     public LoginController(LoginService loginService) {
         this.loginService = loginService;
     }
-
     @PostMapping
     public Object postLogin(@RequestParam("email") String email, @RequestParam("password") String password,
                             @RequestParam("radiobox") String radiobox, HttpServletResponse response) {
