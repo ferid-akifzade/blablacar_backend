@@ -38,7 +38,7 @@ public class SearchController {
         try {
             return searchService.findAll(departure, destination, date, Integer.parseInt(numseats));
         } catch (Exception e) {
-            return "search failed";
+            return "search failed cant find ride with this credential ";
 
         }
     }
@@ -48,6 +48,6 @@ public class SearchController {
         Optional<History> reservation = reservationService.reservation(button, seats, clientID);
         if (reservation.isPresent())
             return reservation.get();
-        return "search failed";
+        return "reservation failed";
     }
 }
