@@ -17,13 +17,13 @@ public class LoginController {
     public LoginController(LoginService loginService) {
         this.loginService = loginService;
     }
-
+    @ResponseBody
     @PostMapping
     public Object postLogin(@RequestParam("email") String email, @RequestParam("password") String password,
                             @RequestParam("radiobox") String radiobox, HttpServletResponse response) {
         Optional<User> check = loginService.check(email, password, radiobox);
         if (!check.isPresent())
-            return "index";
+            return "login failed";
 
         Cookie userCookie = new Cookie("%USERTYPE%", radiobox);
         Cookie idCookie = new Cookie("%ID%", String.valueOf(check.get().getId()));
@@ -31,9 +31,10 @@ public class LoginController {
         response.addCookie(idCookie);
         return check.get();
     }
+    @ResponseBody
     @GetMapping
     public Object getLogin()
     {
-        return "index";
+        return "loginIndex";
     }
 }
