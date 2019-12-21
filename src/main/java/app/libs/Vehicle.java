@@ -19,11 +19,10 @@ public class Vehicle {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String model;
-
-    private int sits;
+    private int seats;
 
     public Vehicle(String model, int seats) {
         this.model = model;
-        this.sits = seats;
+        this.seats = seats;
     }
 }

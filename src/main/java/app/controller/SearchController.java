@@ -33,8 +33,7 @@ public class SearchController {
              @RequestParam("numseats") String numseats)
      {
          try {
-             List<Ride> allSeatchedRides = searchService.findAll(departure, destination, date, Integer.parseInt(numseats));
-             return allSeatchedRides;
+             return searchService.findAll(departure, destination, date, Integer.parseInt(numseats));
          }
          catch (Exception e){
              return  new ArrayList<>();

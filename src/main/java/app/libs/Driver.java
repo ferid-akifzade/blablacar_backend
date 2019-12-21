@@ -35,7 +35,4 @@ public class Driver implements  User {
         this.phonenum = phonenum;
         this.vehicle_id = vehicle_id;
     }
-
-
-
 }
