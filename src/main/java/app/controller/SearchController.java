@@ -41,8 +41,8 @@ public class SearchController {
 
         }
     }
-    @PostMapping
-    public Object reservation(@RequestParam("button") int button, @RequestParam("seats") int seats, @CookieValue(name = "%ID%", defaultValue = "-1") int clientID){
+    @GetMapping("/{id}")
+    public Object reservation(@RequestParam("button") int button, @RequestParam("seats") int seats, @PathVariable("id") int clientID){
         Optional<History> reservation = reservationService.reservation(button, seats, clientID);
         if (reservation.isPresent())
             return reservation.get();
