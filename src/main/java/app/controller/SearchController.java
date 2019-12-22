@@ -1,13 +1,11 @@
 package app.controller;
 
 import app.libs.History;
-import app.libs.Ride;
 import app.service.ReservationService;
 import app.service.SearchService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -20,9 +18,10 @@ public class SearchController {
         this.searchService = searchService;
         this.reservationService = reservationService;
     }
+
     @ResponseBody
     @GetMapping
-    public List<Ride> getAdd() {
+    public Object getAdd() {
         return searchService.getAll();
     }
 
