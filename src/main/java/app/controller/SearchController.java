@@ -31,10 +31,9 @@ public class SearchController {
     public Object postsearch(
             @RequestParam("departure") String departure,
             @RequestParam("destination") String destination,
-            @RequestParam("date") String date,
-            @RequestParam("numseats") String numseats) {
+            @RequestParam("date") String date) {
         try {
-            return searchService.findAll(departure.trim(), destination.trim(), date.trim(), Integer.parseInt(numseats.trim()));
+            return searchService.findAll(departure.trim(), destination.trim(), date.trim());
         } catch (Exception e) {
             return "search failed cant find ride with this credential ";
 
