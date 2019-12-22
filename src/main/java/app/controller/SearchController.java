@@ -40,10 +40,11 @@ public class SearchController {
 
         }
     }
+
     @ResponseBody
     @PostMapping("/{id}")
-    public Object reservation(@RequestParam("button") int button, @RequestParam("seats") int seats, @PathVariable("id") int clientID){
-        Optional<History> reservation = reservationService.reservation(button, seats, clientID);
+    public Object reservation(@PathVariable("id") int rideId, @RequestParam("seats") int seats, @CookieValue("%ID%") int clientID) {
+        Optional<History> reservation = reservationService.reservation(rideId, seats, clientID);
         if (reservation.isPresent())
             return reservation.get();
         return "reservation failed";
