@@ -4,10 +4,6 @@ import app.libs.User;
 import app.service.RegisterService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Optional;
 
@@ -26,7 +22,8 @@ public class RegisterController {
                                @RequestParam("gender") String gender, @RequestParam("phoneNum") String phoneNum,
                                @RequestParam(value = "vehicle",defaultValue = "") String vehicle,
                                @RequestParam(value = "seats",defaultValue = "0") String seats) {
-        Optional<User> register = registerService.register(name, surname, email, password, radiobox, gender, phoneNum, vehicle, Integer.parseInt(seats));
+        Optional<User> register = registerService.register(name.trim(), surname.trim(),
+                email.trim(), password.trim(), radiobox.trim(), gender.trim(), phoneNum.trim(), vehicle.trim(), Integer.parseInt(seats.trim()));
         if (register.isPresent()) {
             return register;
         }

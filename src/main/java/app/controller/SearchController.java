@@ -5,8 +5,6 @@ import app.libs.Ride;
 import app.service.ReservationService;
 import app.service.SearchService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,7 +34,7 @@ public class SearchController {
             @RequestParam("date") String date,
             @RequestParam("numseats") String numseats) {
         try {
-            return searchService.findAll(departure, destination, date, Integer.parseInt(numseats));
+            return searchService.findAll(departure.trim(), destination.trim(), date.trim(), Integer.parseInt(numseats.trim()));
         } catch (Exception e) {
             return "search failed cant find ride with this credential ";
 
